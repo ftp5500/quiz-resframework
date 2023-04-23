@@ -13,4 +13,5 @@ admin.site.register(Grade)
 admin.site.register(Semester)
 admin.site.register(Quizzes)
 admin.site.register(Question)
+admin.site.register(SchoolClass)
 

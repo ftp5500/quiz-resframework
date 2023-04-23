@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from django.utils.translation import gettext_lazy as _
 from multiselectfield import MultiSelectField
 
+
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:
@@ -26,6 +27,13 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
+    class Role(models.TextChoices):
+        ADMIN = 'ADMIN', 'Admin'
+        STUDENT = 'STUDENT', 'Student'
+        TEACHER = 'TEACHER', 'Teacher'
+
+    base_role = Role.ADMIN
+    role = models.CharField(_('دور العضو في المدرسة'),max_length=50, choices=Role.choices , null=True)
     email = models.EmailField(unique=True)
     first_name = models.CharField(_("الاسم الأول"), max_length=30, blank=True)
     mid_name = models.CharField(_("اسم الأب"), max_length=30, blank=True)
@@ -196,7 +204,7 @@ class Course(models.Model):
     teacher = models.ForeignKey(Teacher, on_delete=models.SET_NULL, null=True)
     subject = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True)
     which_class = models.OneToOneField(ClassGroup, on_delete=models.CASCADE, blank=False, null=True)
-    my_column = MultiSelectField(choices=COURSE_METHODS, null= True)
+    my_column = MultiSelectField(choices=COURSE_METHODS, null=True)
 
     description = models.TextField()
 
