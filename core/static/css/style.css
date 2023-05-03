@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+    font-family: 'Almarai', sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}

@@ -1,0 +1,31 @@
+{% extends "layout/layout.html" %}
+{% block title %} About  {% endblock %}
+
+
+
+{% block content %}
+    <h1>About</h1>
+    <div class="grid grid-cols-9 gap-4  justify-items-center justify-center content-center items-center mb-4">
+        <div class="shadow-md text-center rounded-lg p-2 px-6 bg-slate-50">اليوم</div>
+            {% for class in classes %}
+                <div class="shadow-md text-center rounded-lg p-2 bg-slate-50 ">{{ class.get_name_display }} </div>
+
+            {% endfor %}
+
+    </div>
+
+        <div class="grid grid-cols-9 gap-4  justify-items-center justify-center content-center items-center ">
+        <div class=""></div>
+            {% for class in classes %}
+                <div class="shadow-md text-center rounded-lg p-2 bg-slate-50 ">{{ class.student.user.get_full_name }} </div>
+
+            {% endfor %}
+
+
+
+    </div>
+
+
+
+
+{% endblock content %}
