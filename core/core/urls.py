@@ -10,3 +10,4 @@ urlpatterns = [
     path("", include("app.urls"))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
+

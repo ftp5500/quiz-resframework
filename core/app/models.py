@@ -346,7 +346,7 @@ class Teacher(User):
     class Meta:
         verbose_name = _('المعلم')
         verbose_name_plural = _('المعلمون')
-        ordering = ['first_name']
+        ordering = ['id']
 
     def __str__(self):
         return f"{self.get_full_name()}"

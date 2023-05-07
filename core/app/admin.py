@@ -4,7 +4,7 @@ from .models import *
 
 # Register your models here.
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ('get_full_name','birthdate', 'age')
+    list_display = ('id','get_full_name','birthdate', 'age')
     def age(self, obj):
         today = date.today()
         age = today.year - obj.birthdate.year - ((today.month, today.day) < (obj.birthdate.month, obj.birthdate.day))
@@ -13,7 +13,7 @@ class StudentAdmin(admin.ModelAdmin):
     age.short_description = 'العمر'
 
 class TeacherAdmin(admin.ModelAdmin):
-    list_display = ('get_full_name', 'major')
+    list_display = ('id','get_full_name', 'major')
 
     def full_name(self, obj):
         return obj.get_full_name().upper()
@@ -21,11 +21,11 @@ class TeacherAdmin(admin.ModelAdmin):
 
 
 class ClassAdmin(admin.ModelAdmin):
-    list_display = ['name','start_at','end_at']
+    list_display = ['id','name','start_at','end_at']
 
 
 class SubjectAdmin(admin.ModelAdmin):
-    list_display = ['name','teacher']
+    list_display = ['id','name','teacher']
 
 
     def subjectTeacher(self ,obj):
@@ -33,7 +33,7 @@ class SubjectAdmin(admin.ModelAdmin):
     subjectTeacher.short_description = 'معلم المادة'
 
 class GradeAdmin(admin.ModelAdmin):
-    list_display = ['name','section']
+    list_display = ['id','name','section']
 
     def change_view(self, request, object_id, form_url='', extra_context=None):
         extra_context = extra_context or {}
@@ -42,7 +42,7 @@ class GradeAdmin(admin.ModelAdmin):
 
 
 class LessonAdmin(admin.ModelAdmin):
-    list_display = ['class_is','subject']
+    list_display = ['id','class_is','subject']
 
 admin.site.register(User)
 admin.site.register(Teacher, TeacherAdmin)
